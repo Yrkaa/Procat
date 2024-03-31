@@ -34,13 +34,14 @@ public class PositionsListAdapter extends RecyclerView.Adapter<PositionsListAdap
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView iv;
-        TextView tv;
+        TextView name, time;
         View v;
 
         public ViewHolder(View v){
             super(v);
-            iv = v.findViewById(R.id.position_list_item_iv);
-            tv = v.findViewById(R.id.position_list_item_tv);
+            this.iv = v.findViewById(R.id.position_list_item_iv);
+            this.name = v.findViewById(R.id.position_list_item_name_tv);
+            this.time = v.findViewById(R.id.position_list_item_time_tv);
             this.v = v;
         }
     }
@@ -59,11 +60,18 @@ public class PositionsListAdapter extends RecyclerView.Adapter<PositionsListAdap
 
         //Назначение информации
         holder.iv.setImageResource(obj.image);
-        holder.tv.setText(obj.text);
+        holder.name.setText(obj.text);
+        if (obj.time % 10 == 1)
+            holder.time.setText(obj.time+" минута");
+        else if (obj.time % 10 > 1 && obj.time % 10 < 5)
+            holder.time.setText(obj.time+" минуты");
+        else
+            holder.time.setText(obj.time+" минут");
 
         //Назначение шрифта
         Typeface font = Typeface.createFromAsset(c.getAssets(), "fonts/KyivTypeSans.ttf");
-        holder.tv.setTypeface(font);
+        holder.name.setTypeface(font);
+        holder.time.setTypeface(font);
     }
 
     @Override

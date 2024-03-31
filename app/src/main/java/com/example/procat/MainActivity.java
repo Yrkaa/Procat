@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         addPos.setTypeface(font);
 
         //Заполнение списка с информацией для адаптера
-        adapterData.add(new PositionData(R.mipmap.ic_launcher, "Услуга 1"));
+        adapterData.add(new PositionData(R.mipmap.ic_launcher, "Услуга 1", 5));
 
         //Инициализация адаптера
         adapter = new PositionsListAdapter(adapterData, this);

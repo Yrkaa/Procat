@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.494" />
 
     <TextView
-        android:id="@+id/position_list_item_tv"
+        android:id="@+id/position_list_item_name_tv"
         android:layout_width="159dp"
         android:layout_height="47dp"
         android:text="Name"
@@ -31,5 +31,15 @@
         app:layout_constraintHorizontal_bias="0.198"
         app:layout_constraintStart_toEndOf="@+id/position_list_item_iv"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/position_list_item_time_tv"
+        android:layout_width="159dp"
+        android:layout_height="47dp"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/position_list_item_name_tv"
+        app:layout_constraintStart_toStartOf="@+id/position_list_item_name_tv"
+        app:layout_constraintTop_toBottomOf="@+id/position_list_item_name_tv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
