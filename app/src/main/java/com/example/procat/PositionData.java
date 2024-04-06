@@ -1,10 +1,13 @@
 package com.example.procat;
 
+import android.graphics.Bitmap;
+
 public class PositionData {
-    int image, time;
+    int time;
+    Bitmap  image;
     String text;
 
-    public PositionData(int image, String text, int time){
+    public PositionData(Bitmap image, String text, int time){
         this.image = image;
         this.text = text;
         this.time = time;

@@ -59,7 +59,7 @@ public class PositionsListAdapter extends RecyclerView.Adapter<PositionsListAdap
         PositionData obj = data.get(position);
 
         //Назначение информации
-        holder.iv.setImageResource(obj.image);
+        holder.iv.setImageBitmap(obj.image);
         holder.name.setText(obj.text);
         if (obj.time % 10 == 1)
             holder.time.setText(obj.time+" минута");

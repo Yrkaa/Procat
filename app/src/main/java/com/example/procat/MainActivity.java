@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.Button;
@@ -46,11 +47,12 @@ public class MainActivity extends AppCompatActivity {
         addPos.setTypeface(font);
 
         //Заполнение списка с информацией для адаптера
+        db.execSQL("INSERT  INTO Positions(name, time)  VALUES('Велопрокат', 45) ");
         Cursor positionsDB = db.rawQuery("SELECT * FROM Positions", null);
         while (positionsDB.moveToNext()){
             String name = positionsDB.getString(1);
             int time = positionsDB.getInt(4);
-            adapterData.add(new PositionData(R.mipmap.ic_launcher, name, time));
+            adapterData.add(new PositionData(BitmapFactory.decodeResource(getResources(),  R.drawable.no_image_resorce), name, time));
         }
 
         //Инициализация адаптера
