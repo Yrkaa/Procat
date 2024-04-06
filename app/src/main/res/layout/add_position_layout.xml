@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="600dp">
+
+    <ImageView
+        android:id="@+id/select_position_image_iv"
+        android:layout_width="91dp"
+        android:layout_height="91dp"
+        android:src="@drawable/image_select"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/position_name_et"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="30dp"
+        android:textColor="#FFDBA6"
+        android:backgroundTint="#FFDBA6"
+        android:layout_marginTop="5dp"
+        android:hint="(Название услуги)"
+        android:textColorHint="#FFDBA6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/select_position_image_iv" />
+
+    <EditText
+        android:id="@+id/position_time_et"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:backgroundTint="#FFDBA6"
+        android:hint="(Время услуги)"
+        android:textColor="#FFDBA6"
+        android:textColorHint="#FFDBA6"
+        android:textSize="30dp"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/position_name_et" />
+
+    <EditText
+        android:id="@+id/position_description_et"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:backgroundTint="#FFDBA6"
+        android:hint="(Описание)"
+        android:inputType="textMultiLine"
+        android:textColor="#FFDBA6"
+        android:textColorHint="#FFDBA6"
+        android:gravity="top|left"
+        android:textSize="23dp"
+        app:layout_constraintBottom_toTopOf="@+id/add_position_btn2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/position_time_et" />
+
+    <Button
+        android:id="@+id/add_position_btn2"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:backgroundTint="#FFDBA6"
+        android:text="Создать"
+        android:textSize="32dp"
+        android:textColor="#FFF"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
