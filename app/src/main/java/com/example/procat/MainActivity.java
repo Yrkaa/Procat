@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Введите время услуги!", Toast.LENGTH_LONG).show();
 
                 if(name.length() > 0 && time.length() > 0){
-                    db.execSQL("INSERT INTO Positions (name, time, description) VALUES ('" + name + "'," + Integer.parseInt(time)+ ", '" + description + "')");
+                    adapter.addPosition(name, time, description);
                     dialog.dismiss();
                 }
 

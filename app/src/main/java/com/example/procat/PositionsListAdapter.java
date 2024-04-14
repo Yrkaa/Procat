@@ -1,6 +1,9 @@
 package com.example.procat;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.icu.text.Transliterator;
 import android.view.LayoutInflater;
@@ -33,7 +36,7 @@ public class PositionsListAdapter extends RecyclerView.Adapter<PositionsListAdap
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView iv;
+        ImageView iv, del;
         TextView name, time;
         View v;
 
@@ -42,6 +45,7 @@ public class PositionsListAdapter extends RecyclerView.Adapter<PositionsListAdap
             this.iv = v.findViewById(R.id.position_list_item_iv);
             this.name = v.findViewById(R.id.position_list_item_name_tv);
             this.time = v.findViewById(R.id.position_list_item_time_tv);
+            this.del = v.findViewById(R.id.position_list_item_del_btn);
             this.v = v;
         }
     }
@@ -72,10 +76,49 @@ public class PositionsListAdapter extends RecyclerView.Adapter<PositionsListAdap
         Typeface font = Typeface.createFromAsset(c.getAssets(), "fonts/KyivTypeSans.ttf");
         holder.name.setTypeface(font);
         holder.time.setTypeface(font);
+
+        //Удаление записи
+        holder.del.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deletePosition(position);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return data.size();
+    }
+
+    //Удаление записи
+    public void deletePosition(int i){
+        //Из списка
+        data.remove(i);
+        notifyItemRemoved(i);
+
+        //Из бд
+        SQLiteDatabase db = c.openOrCreateDatabase("positions.db",  Context.MODE_PRIVATE, null);
+        Cursor cursor = db.rawQuery("SELECT * FROM Positions", null);
+        int count = 0;
+        while(cursor.moveToNext()){
+            if(count==i){
+                int id = cursor.getInt(0);
+                db.execSQL("DELETE FROM Positions WHERE _id="+id);
+                break;
+            }
+            count++;
+        }
+    }
+
+    //Добавление записи
+    public void addPosition(String  name, String time, String description){
+        //В бд
+        SQLiteDatabase db = c.openOrCreateDatabase("positions.db", Context.MODE_PRIVATE, null);
+        db.execSQL("INSERT INTO Positions (name, time, description) VALUES ('" + name + "'," + Integer.parseInt(time)+ ", '" + description + "')");
+
+        //В список
+        data.add(new PositionData(BitmapFactory.decodeResource(c.getResources(), R.drawable.no_image_resorce),  name,  Integer.parseInt(time)));
+        notifyItemInserted(data.size()-1);
     }
 }
