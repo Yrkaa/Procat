@@ -56,8 +56,9 @@ public class MainActivity extends AppCompatActivity {
         Cursor positionsDB = db.rawQuery("SELECT * FROM Positions", null);
         while (positionsDB.moveToNext()){
             String name = positionsDB.getString(1);
+            String description = positionsDB.getString(3);
             int time = positionsDB.getInt(4);
-            adapterData.add(new PositionData(BitmapFactory.decodeResource(getResources(),  R.drawable.no_image_resorce), name, time));
+            adapterData.add(new PositionData(BitmapFactory.decodeResource(getResources(),  R.drawable.no_image_resorce), name, time, description));
         }
 
         //Инициализация адаптера

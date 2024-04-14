@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PositionActivity">
+
+    <ImageView
+        android:id="@+id/position_image_iv"
+        android:layout_width="match_parent"
+        android:layout_height="199dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/position_name_tv"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:textSize="32dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/position_image_iv" />
+
+    <TextView
+        android:id="@+id/position_description_tv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="top"
+        android:textSize="24dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/give_position_btn"
+        app:layout_constraintTop_toBottomOf="@+id/position_name_tv" />
+
+    <Button
+        android:id="@+id/give_position_btn"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:backgroundTint="#FFDBA6"
+        android:text="Предоставить"
+        android:textSize="32dp"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    
+</androidx.constraintlayout.widget.ConstraintLayout>

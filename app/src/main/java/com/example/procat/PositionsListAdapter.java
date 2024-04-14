@@ -1,6 +1,7 @@
 package com.example.procat;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.BitmapFactory;
@@ -84,6 +85,18 @@ public class PositionsListAdapter extends RecyclerView.Adapter<PositionsListAdap
                 deletePosition(position);
             }
         });
+
+        //Переход на страницу с услугой
+        holder.v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toPos = new Intent(c, PositionActivity.class);
+                toPos.putExtra("img", obj.image);
+                toPos.putExtra("name", obj.text);
+                toPos.putExtra("description", obj.description);
+                c.startActivity(toPos);
+            }
+        });
     }
 
     @Override
@@ -118,7 +131,7 @@ public class PositionsListAdapter extends RecyclerView.Adapter<PositionsListAdap
         db.execSQL("INSERT INTO Positions (name, time, description) VALUES ('" + name + "'," + Integer.parseInt(time)+ ", '" + description + "')");
 
         //В список
-        data.add(new PositionData(BitmapFactory.decodeResource(c.getResources(), R.drawable.no_image_resorce),  name,  Integer.parseInt(time)));
+        data.add(new PositionData(BitmapFactory.decodeResource(c.getResources(), R.drawable.no_image_resorce),  name,  Integer.parseInt(time), description));
         notifyItemInserted(data.size()-1);
     }
 }
